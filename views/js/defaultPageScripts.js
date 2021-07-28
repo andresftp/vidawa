@@ -45,7 +45,7 @@ $( document ).ready(function() {
                 "data": "doc_id",
                 "render": function ( data, type, row, meta ) {
                     return'<div class="text-center">' +
-                        '<a href="'+window.root+'/documentos/editar/'+data+'"><i class="fas fa-trash-alt"></i></a>' +
+                        '<a href="'+window.root+'/documentos/eliminar/'+data+'"><i class="fas fa-trash-alt"></i></a>' +
                         '</div>';
                 }
             }

@@ -1,6 +1,6 @@
 <div class="py-4 text-center">
 </div>
-<h5>Crear empleado</h5>
+<h5>Crear documento</h5>
 <?php
 if($type=='ok'){
     ?>
@@ -38,7 +38,7 @@ if($type=='ok'){
             <div class="mb-3 row">
                 <label for="doc_nombre" class="col-sm-3 col-form-label">Nombre documento *</label>
                 <div class="col-sm-6">
-                    <input type="text" class="form-control" id="doc_nombre" name="doc_nombre" placeholder="Nombre documento" value="<?php echo $doc_nombre ?>" required>
+                    <input type="text" class="form-control" id="doc_nombre" name="doc_nombre" placeholder="Nombre documento" value="<?php echo $dataDoc[0]->doc_nombre ?>" required>
                     <div class="invalid-feedback">
                         Nombre de documento es obligatorio.
                     </div>
@@ -47,7 +47,7 @@ if($type=='ok'){
             <div class="mb-3 row">
                 <label for="doc_contenido" class="col-sm-3 col-form-label">Contenido *</label>
                 <div class="col-sm-6">
-                    <textarea name="doc_contenido" id="doc_contenido" class="form-control" rows="" required><?php echo $doc_contenido ?></textarea>
+                    <textarea name="doc_contenido" id="doc_contenido" class="form-control" rows="" required><?php echo $dataDoc[0]->doc_contenido ?></textarea>
                     <div class="invalid-feedback">
                         El contenido es obligatorio
                     </div>
@@ -61,7 +61,7 @@ if($type=='ok'){
                         <?php
                         if(count($dataTipo)>0){
                             foreach ($dataTipo AS $item){
-                                $sel = ($item->tip_id==$doc_id_tipo)?'selected':'';
+                                $sel = ($item->tip_id==$dataDoc[0]->doc_id_tipo)?'selected':'';
                                 echo '<option value="'.$item->tip_id.'" '.$sel.'>'.'('.$item->tip_prefijo.') '.$item->tip_nombre.'</option>';
                             }
                         }
@@ -80,7 +80,7 @@ if($type=='ok'){
                         <?php
                         if(count($dataProc)>0){
                             foreach ($dataProc AS $item){
-                                $sel = ($item->pro_id==$doc_id_proceso)?'selected':'';
+                                $sel = ($item->pro_id==$dataDoc[0]->doc_id_proceso)?'selected':'';
                                 echo '<option value="'.$item->pro_id.'" '.$sel.'>'.'('.$item->pro_prefijo.') '.$item->pro_nombre.'</option>';
                             }
                         }

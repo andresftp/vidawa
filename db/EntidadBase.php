@@ -51,6 +51,7 @@ class EntidadBase{
         
         return $resultSet;
     }
+
     
     public function deleteById($id){
         $query=$this->db->query("DELETE FROM $this->table WHERE id=$id"); 

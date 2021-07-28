@@ -1,6 +1,7 @@
 <?php
 session_start();
 date_default_timezone_set('America/Bogota');
+#ini_set('display_errors', 0);
 require_once  'vendor/autoload.php';
 
 //Cargamos configuraciones basicas

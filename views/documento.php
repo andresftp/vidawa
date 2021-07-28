@@ -1,6 +1,6 @@
 <div class="py-5 text-center">
 </div>
-<a href="<?php echo ROOT.'/documentos/crear/' ?>" class="btn btn-primary"><i class="fas fa-user-ninja vanished"></i> Registrar Documento</a>
+<a href="<?php echo ROOT.'/documentos/crear/' ?>" class="btn btn-primary"><i class="fas fa-book vanished"></i> Registrar Documento</a>
 <hr/>
 <div class="card">
     <div class="card-body">

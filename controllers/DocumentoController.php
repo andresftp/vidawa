@@ -27,6 +27,36 @@ class DocumentoController
         $view = "crea_documento";
         include_once "views/master.php";
     }
+    function editar($id){
+        //Carga de data básica
+        $objTipoDoc = new TipoDocumento();
+        $dataTipo = $objTipoDoc->getAll();
+        $objProceso = new Proceso();
+        $dataProc = $objProceso->getAll();
+
+        $objDocumento =  new Documento();
+        $dataDoc = $objDocumento->getBy('doc_id',$id);
+
+
+        if($_POST['guardar']!=''){
+            $this->guardarDocumento($_POST,'e',$id);
+            $type = "ok";
+            $msj = "Documento editado con exito.";
+        }
+        $view = "crea_documento";
+        include_once "views/master.php";
+    }
+
+    function eliminar($id){
+
+        $objDocumento =  new Documento();
+        $objDocumento->deleteBy('doc_id',$id);
+        $type = "ok";
+        $msj = "Documento eliminado con exito.";
+
+        $view = "elimina_documento";
+        include_once "views/master.php";
+    }
 
     private function guardarDocumento($post,$acc,$id=''){
         $objDoc = new Documento();
@@ -48,7 +78,7 @@ class DocumentoController
         $doc_codigo = $preTipo[0]->tip_prefijo."-".$preProc[0]->pro_prefijo."-".$n;
         if($acc=='e'){
             $codAnt = $objDoc->getBy('doc_id',$id);
-            $codInsert = ($codAnt[0]['doc_codigo']!=$doc_codigo)?$doc_codigo:$codAnt[0]['doc_codigo'];
+            $codInsert = ($codAnt[0]->doc_codigo!=$doc_codigo)?$doc_codigo:$codAnt[0]->doc_codigo;
 
         }else{
             $codInsert=$doc_codigo;
