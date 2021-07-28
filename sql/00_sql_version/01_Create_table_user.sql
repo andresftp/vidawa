@@ -1,0 +1,2 @@
+CREATE TABLE `usuario` ( `id_usuario` INT NOT NULL AUTO_INCREMENT , `nombres` VARCHAR(255) NOT NULL , `usuario` VARCHAR(255) NOT NULL , `clave` VARCHAR(255) NOT NULL , PRIMARY KEY (`id_usuario`)) ENGINE = InnoDB;
+INSERT INTO `usuario` (`id_usuario`, `nombres`, `usuario`, `clave`) VALUES (NULL, 'Administrador', 'admin', SHA1('admin')) ;

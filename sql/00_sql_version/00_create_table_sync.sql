@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: localhost
--- Tiempo de generación: 10-04-2018 a las 05:08:33
--- Versión del servidor: 5.7.17-log
--- Versión de PHP: 5.6.30
+-- Tiempo de generaciï¿½n: 10-04-2018 a las 05:08:33
+-- Versiï¿½n del servidor: 5.7.17-log
+-- Versiï¿½n de PHP: 5.6.30
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
@@ -26,7 +26,7 @@ SET time_zone = "+00:00";
 -- Estructura de tabla para la tabla `crm_syncdb`
 --
 
-CREATE TABLE `crm_syncdb` (
+CREATE TABLE `syncdb` (
   `id_sync` int(11) NOT NULL,
   `fecha` datetime NOT NULL,
   `file` varchar(255) NOT NULL,
@@ -34,13 +34,13 @@ CREATE TABLE `crm_syncdb` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Índices para tablas volcadas
+-- ï¿½ndices para tablas volcadas
 --
 
 --
 -- Indices de la tabla `crm_syncdb`
 --
-ALTER TABLE `crm_syncdb`
+ALTER TABLE `syncdb`
   ADD PRIMARY KEY (`id_sync`);
 
 --
@@ -50,7 +50,7 @@ ALTER TABLE `crm_syncdb`
 --
 -- AUTO_INCREMENT de la tabla `crm_syncdb`
 --
-ALTER TABLE `crm_syncdb`
+ALTER TABLE `syncdb`
   MODIFY `id_sync` int(11) NOT NULL AUTO_INCREMENT;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

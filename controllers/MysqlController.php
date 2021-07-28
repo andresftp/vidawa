@@ -15,7 +15,7 @@ class MysqlController extends EntidadBase
     private function chkTableSync(){
         $con = $this->db();
         $sql = "SELECT COUNT(*) AS count FROM information_schema.tables 
-                  WHERE table_schema = '".$_ENV['DB_DATABASE']."' AND table_name = 'crm_syncdb'";
+                  WHERE table_schema = '".$_ENV['DB_DATABASE']."' AND table_name = 'syncdb'";
         $res = $con->query($sql);
         while ($row = $res->fetch_assoc()){
             $resulset[] = $row;
@@ -40,7 +40,7 @@ class MysqlController extends EntidadBase
 
     /**
      * @param $dir
-     * @throws Exception
+     * @throws \Exception
      */
     private function readFileSql($dir){
         set_time_limit(0);
@@ -62,7 +62,7 @@ class MysqlController extends EntidadBase
                 $save = $con->query("SET NAMES 'utf8'");
                 $save = $con->query($this->query);
                 if (!$save) {
-                    throw new Exception(mysqli_error($con) . "[ $this->query] dir: ".$dir);
+                    throw new \Exception($con->error . "[ $this->query] dir: ".$dir);
                 }
                 $query= '';
             }
@@ -70,7 +70,7 @@ class MysqlController extends EntidadBase
     }
 
     private function insertVersionDB($vs,$file){
-        $sql= "INSERT INTO crm_syncdb SET 
+        $sql= "INSERT INTO syncdb SET 
                 fecha = NOW(),
                 version = '".$vs."',
                 file = '".$file."'
@@ -80,14 +80,14 @@ class MysqlController extends EntidadBase
         $con = $this->db();
         $save = $con->query($this->query);
         if (!$save) {
-            throw new Exception(mysqli_error($con) . "[ $this->query]");
+            throw new \Exception($con->error . "[ $this->query]");
         }
         return $save;
     }
 
     private function getLastVs(){
         $con = $this->db();
-        $sql = "SELECT * FROM crm_syncdb ORDER BY id_sync DESC LIMIT 1";
+        $sql = "SELECT * FROM syncdb ORDER BY id_sync DESC LIMIT 1";
         $res = $con->query($sql);
         while ($row = $res->fetch_assoc()){
             $resulset[] = $row;
@@ -106,12 +106,12 @@ class MysqlController extends EntidadBase
                 if($vsf[0]=='00'&&$ext[1]=='sql'){
                     try {
                         $this->readFileSql($dirSqlV . '/' . $rowFiles);
-                    } catch (Exception $e) {
+                    } catch (\Exception $e) {
                         echo $e;
                     }
                     try {
                         $this->insertVersionDB($vsf[0], $rowFiles);
-                    } catch (Exception $e) {
+                    } catch (\Exception $e) {
                         echo $e;
                     }
                 }

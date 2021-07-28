@@ -27,6 +27,27 @@ if (isset($action)) {
 
 //Selecciona controladores segun elementos de url
 switch ($module) {
+    case 'documentos':
+        if(!$_SESSION['id_usuario']){
+            header("Location: ".ROOT);
+        }
+        $controller = new \Controllers\DocumentoController();
+        if (isset($action)) {
+
+            if (method_exists($controller, $action)) {
+                if (isset($parameter)) {
+                    $controller->$action($parameter);
+                } else {
+                    $controller->$action();
+                }
+            } else {
+                include_once('views/404.php');
+            }
+        } else {
+            include_once('views/404.php');
+        }
+        break;
+        break;
     case 'login':
         $controller = new  \Controllers\GeneralController();
         if (isset($action)) {
