@@ -1,0 +1,11 @@
+{
+    "autoload": {
+        "psr-4": {
+            "Controllers\\": "controllers/",
+            "Db\\": "db/"
+        }
+    },
+    "require": {
+        "vlucas/phpdotenv": "^5.3"
+    }
+}
