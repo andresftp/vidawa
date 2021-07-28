@@ -155,4 +155,19 @@ class Documento extends EntidadBase
         }
         return $resultSet;
     }
+
+
+    public function obtenerDocumentos(){
+        $con = $this->db();
+
+        $sql = "SELECT * FROM doc_documento AS d
+                INNER JOIN tip_tipo_doc AS td ON  td.tip_id = d.doc_id_tipo
+                INNER JOIN pro_proceso AS pr ON  pr.pro_id = d.doc_id_proceso ";
+        $res = $con->query($sql);
+        $resultSet= array();
+        while ($row = $res->fetch_assoc()) {
+            $resultSet[] = $row;
+        }
+        return $resultSet;
+    }
 }

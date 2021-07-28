@@ -63,4 +63,14 @@ class DocumentoController
         $insDoc->agregarEditarDoc($acc);
     }
 
+    function ajax(){
+        $objDoc = new Documento();
+        $data = $objDoc->obtenerDocumentos();
+        $results = ["sEcho" => 1,
+            "iTotalRecords" => count($data),
+            "iTotalDisplayRecords" => count($data),
+            "aaData" => $data ];
+        echo json_encode($results);
+    }
+
 }

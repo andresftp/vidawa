@@ -24,52 +24,28 @@ $( document ).ready(function() {
             "url": "//cdn.datatables.net/plug-ins/1.10.20/i18n/Spanish.json"
         },
         "bProcessing": true,
-        "sAjaxSource": "ajax/listEmpl.php",
+        "sAjaxSource": window.root+"/documentos/ajax/",
         "aoColumns": [
-            { mData: 'nombre' },
-            { mData: 'email' },
+            { mData: 'doc_id' },
+            { mData: 'doc_nombre' },
+            { mData: 'doc_codigo' },
+            { mData: 'tip_nombre' },
+            { mData: 'pro_nombre' },
             {
                 "targets": 0,
-                "data": 'sexo',
-                "render": function ( data, type, row, meta ) {
-                    var sexo;
-                    if(data==0){
-                        sexo = "Masculino";
-                    }else{
-                        sexo = "Femenino";
-                    }
-                    return sexo;
-                }
-            },
-            { mData: 'nombre_area' },
-            {
-                "targets": 0,
-                "data": 'boletin',
-                "render": function ( data, type, row, meta ) {
-                    var boletin;
-                    if(data==0){
-                        boletin = "No";
-                    }else{
-                        boletin = "Si";
-                    }
-                    return boletin;
-                }
-            },
-            {
-                "targets": 0,
-                "data": "id",
+                "data": "doc_id",
                 "render": function ( data, type, row, meta ) {
                     return'<div class="text-center">' +
-                        '<a href="?acc=e&id='+data+'" ><i class="fas fa-pencil-alt"></i></a>' +
+                        '<a href="'+window.root+'/documentos/editar/'+data+'" ><i class="fas fa-pencil-alt"></i></a>' +
                         '</div>';
                 }
             },
             {
                 "targets": 0,
-                "data": "id",
+                "data": "doc_id",
                 "render": function ( data, type, row, meta ) {
                     return'<div class="text-center">' +
-                        '<a href="?acc=d&id='+data+'"><i class="fas fa-trash-alt"></i></a>' +
+                        '<a href="'+window.root+'/documentos/editar/'+data+'"><i class="fas fa-trash-alt"></i></a>' +
                         '</div>';
                 }
             }
